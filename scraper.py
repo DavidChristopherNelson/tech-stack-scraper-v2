@@ -20,26 +20,59 @@ driver.get(url)
 # Pause to allow the page to load (adjust based on your network speed)
 time.sleep(1)
 
-# Locate the "Log In" button and click it
+# Navigate through the log in sequence.
+
 login_button = driver.find_element(By.XPATH, "//button[contains(text(), 'Log in')]")
 login_button.click()
 time.sleep(1)
 
-# Locate the username field and enter the username
 username_field = driver.find_element(By.ID, "ycid-input")
-username_field.send_keys("DavidCNelson")
-print(username_field.get_attribute("value"))
+username_field.send_keys("BobbyBots")
 
-# Locate the password field and enter the password
 password_field = driver.find_element(By.ID, "password-input")
 yc_password = os.getenv("YC_PASSWORD")
 password_field.send_keys(yc_password)
-print(password_field.get_attribute("value"))
 time.sleep(1)
 
-# Locate the "Log In" button and click it
 login_button = driver.find_element(By.XPATH, "//button[contains(@class, 'orange-button')]")
 login_button.click()
+time.sleep(8)
+
+# Navigate to the job board page
+link = driver.find_element(By.XPATH, "//a[@href='/companies']")
+link.click()
+time.sleep(1)
+
+# Fill out fields
+role_input_field = driver.find_element(By.ID, "react-select-2-input")
+role_input_field.send_keys("engineering")
+time.sleep(0.5)
+role_input_field.send_keys(Keys.ENTER)
+time.sleep(0.5)
+
+experience_drop_down_button = driver.find_element(By.XPATH, "//div[@id='minExperience']//div[contains(@class, 'css-tlfecz-indicatorContainer')]")
+experience_drop_down_button.click()
+time.sleep(0.2)
+driver.switch_to.active_element.send_keys(Keys.ARROW_DOWN)
+time.sleep(0.2)
+driver.switch_to.active_element.send_keys(Keys.ARROW_DOWN)
+time.sleep(0.5)
+driver.switch_to.active_element.send_keys(Keys.ENTER)
+time.sleep(0.5)
+experience_drop_down_button.click()
+time.sleep(0.5)
+driver.switch_to.active_element.send_keys(Keys.ENTER)
+time.sleep(0.5)
+
+remote_drop_down_button = driver.find_element(By.XPATH, "//div[@id='remote']//div[contains(@class, 'css-tlfecz-indicatorContainer')]")
+remote_drop_down_button.click()
+time.sleep(0.2)
+driver.switch_to.active_element.send_keys(Keys.ARROW_DOWN)
+time.sleep(0.2)
+driver.switch_to.active_element.send_keys(Keys.ARROW_DOWN)
+time.sleep(0.2)
+driver.switch_to.active_element.send_keys(Keys.ENTER)
+
 time.sleep(10)
 
 # Get the rendered HTML
