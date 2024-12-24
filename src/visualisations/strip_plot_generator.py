@@ -1,6 +1,6 @@
 """
 This script generates a strip plot from the data in 
-../data/extracted_job_data.txt. The x-axis lists different technologies and the
+../../data/extracted_job_data.txt. The x-axis lists different technologies and the
 y-axis contains the number of mentions for each technology in the job 
 descriptions.
 """
@@ -12,7 +12,7 @@ import pandas as pd
 import seaborn as sns
 
 # Load data from the JSON file
-with open("../data/extracted_job_data.txt", "r", encoding="utf-8") as file:
+with open("../../data/extracted_job_data.txt", "r", encoding="utf-8") as file:
     extracted_job_data = json.load(file)
 
 # Prepare data for plotting
